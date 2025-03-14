@@ -1,30 +1,37 @@
 CC = cc -Wall -Wextra -Werror
-AR	= ar rs
-RM	= rm -f
+AR = ar rs
+RM = rm -f
+CLIENT = client
+SERVER = server
 
-FILES = 
-		
-BFILES =
+CFILES =  ./utils/ft_atoi.c \
+          ./utils/check.c \
+          ./utils/ft_putchar_fd.c \
+          ./utils/ft_putnbr_fd.c \
+          ./utils/ft_putstr_fd.c \
+          ./utils/ft_strlen.c
 
+S_CLIENT = client.c
+S_SERVER = server.c
 
-OBJ = $(FILES:.c=.o)
-BOBJ = $(BFILES:.c=.o)
-NAME =
+O_FILES = $(CFILES:.c=.o)
+O_CLIENT = $(S_CLIENT:.c=.o)
+O_SERVER = $(S_SERVER:.c=.o)
 
-all: $(NAME)
+all: $(CLIENT) $(SERVER)
 
-$(NAME): $(OBJ) 
-	$(CC) $(OBJ) -o $(NAME) 
+$(CLIENT): $(O_CLIENT) $(O_FILES)
+	$(CC) $(O_CLIENT) $(O_FILES) -o $(CLIENT) 
 
-
-bonus: 
+$(SERVER): $(O_SERVER) $(O_FILES)
+	$(CC) $(O_SERVER) $(O_FILES) -o $(SERVER)
 
 clean: 
-	$(RM) $(OBJ) $(BOBJ)
+	$(RM) $(O_CLIENT) $(O_SERVER) $(O_FILES) 
 
 fclean: clean
-	$(RM) $(NAME) 
+	$(RM) $(CLIENT) $(SERVER)
 
 re: fclean all
 
-.PHONY: re clean fclean bonus all
+.PHONY: re clean fclean all

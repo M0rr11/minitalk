@@ -5,15 +5,17 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
-#include <sys/wait.h>
-#define MAX_BITS 8
 
 //LIBFT
 
-int	ft_atoi(const char *s);
-
+int	    ft_atoi(const char *s);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
+int     ft_strlen(const char *str);
 
 //
+void    printexit(char *error);
+int     check_pid(char *pid);
 
 #endif
